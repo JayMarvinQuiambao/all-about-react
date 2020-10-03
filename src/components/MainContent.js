@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-function MainContent() {
-    return (
-        <main>
+export class MainContent extends Component {
+    render() {
+        return (
+            <main>
             This is the main content
         </main>
-    )
+        )
+    }
 }
 
 export default MainContent
