@@ -14,13 +14,31 @@ class App extends Component {
   
     this.state = {
        todos: todos
-    }
+    };
+
+    this.todoChange = this.todoChange.bind(this);
+  }
+
+  todoChange(id) {
+    this.setState(prevState => {
+      const updatedTodos = prevState.todos.map(todo => {
+        if(todo.id === id) {
+          todo.isChecked = !todo.isChecked;
+        }
+        return todo;
+      });
+
+      console.log(updatedTodos);
+      
+      return {
+        todos: updatedTodos
+      }
+    })
   }
 
   render() {
     const productsComponent = products.map(product => <Product key={product.id} product={product} />);
-    console.log(todos);
-    const todosComponent = this.state.todos.map(todo => <TodoItem key={todo.id} todo={todo} />);
+    const todosComponent = this.state.todos.map(todo => <TodoItem key={todo.id} todo={todo} todoChange={this.todoChange} />);
     return (
       <div>
         {todosComponent}
