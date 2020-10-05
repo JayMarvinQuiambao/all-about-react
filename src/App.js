@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Login from './components/Login';
 import MainContent from './components/MainContent';
 import Product from './components/Product';
 import TodoItem from './components/TodoItem';
@@ -11,9 +12,9 @@ import todos from './constants/TodoList';
 class App extends Component {
   constructor() {
     super()
-  
+
     this.state = {
-       todos: todos
+      todos: todos
     };
 
     this.todoChange = this.todoChange.bind(this);
@@ -22,14 +23,14 @@ class App extends Component {
   todoChange(id) {
     this.setState(prevState => {
       const updatedTodos = prevState.todos.map(todo => {
-        if(todo.id === id) {
+        if (todo.id === id) {
           todo.isChecked = !todo.isChecked;
         }
         return todo;
       });
 
       console.log(updatedTodos);
-      
+
       return {
         todos: updatedTodos
       }
@@ -41,6 +42,7 @@ class App extends Component {
     const todosComponent = this.state.todos.map(todo => <TodoItem key={todo.id} todo={todo} todoChange={this.todoChange} />);
     return (
       <div>
+        <Login />
         {todosComponent}
         {productsComponent}
         <ContactCard
