@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
+import Form from './components/Form';
 import Header from './components/Header';
 import Login from './components/Login';
 import MainContent from './components/MainContent';
@@ -43,6 +44,7 @@ class App extends Component {
     const todosComponent = this.state.todos.map(todo => <TodoItem key={todo.id} todo={todo} todoChange={this.todoChange} />);
     return (
       <div>
+        <Form />
         <Planets />
         <Login />
         {todosComponent}
